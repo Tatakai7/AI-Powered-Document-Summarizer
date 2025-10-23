@@ -10,20 +10,18 @@
 
 ### 1.1 Navigate to backend directory
 
-\`\`\`bash
 cd backend
-\`\`\`
+
 
 ### 1.2 Install dependencies
 
-\`\`\`bash
 npm install
-\`\`\`
+
 
 ### 1.3 Configure environment variables
 
 Create a `.env` file in the backend directory:
-\`\`\`
+
 MONGODB_URI=mongodb://localhost:27017/document-summarizer
 
 # OR for MongoDB Atlas:
@@ -33,40 +31,32 @@ MONGODB_URI=mongodb://localhost:27017/document-summarizer
 PORT=3001
 NODE_ENV=development
 ALLOWED_ORIGINS=http://localhost:5173,http://localhost:3000
-\`\`\`
+
 
 ### 1.4 Start the backend server
 
-\`\`\`bash
 npm run dev
-\`\`\`
 
 You should see:
-\`\`\`
+
 Server running on port 3001
 Connected to MongoDB
 NLP Model loaded successfully
-\`\`\`
+
 
 ## Step 2: Setup Frontend
 
 ### 2.1 Navigate to frontend directory
 
-\`\`\`bash
 cd AI-Powered-Document-Summarizer
-\`\`\`
 
 ### 2.2 Install dependencies
 
-\`\`\`bash
 npm install
-\`\`\`
 
 ### 2.3 Start the development server
 
-\`\`\`bash
 npm run dev
-\`\`\`
 
 The frontend will be available at `http://localhost:5173`
 
@@ -117,16 +107,16 @@ kill -9 <PID>
 ## Running Both Servers
 
 **Terminal 1 - Backend:**
-\`\`\`bash
+
 cd backend
 npm run dev
-\`\`\`
+
 
 **Terminal 2 - Frontend:**
-\`\`\`bash
+
 cd AI-Powered-Document-Summarizer
 npm run dev
-\`\`\`
+
 
 Both servers must be running for the application to work properly.
 
