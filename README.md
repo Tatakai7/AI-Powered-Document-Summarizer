@@ -31,7 +31,7 @@ MONGODB_URI=mongodb://localhost:27017/document-summarizer
 
 # OR for MongoDB Atlas:
 
-# MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/document-summarizer
+### MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/document-summarizer
 
 PORT=3001
 NODE_ENV=development
