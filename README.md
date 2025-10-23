@@ -1,5 +1,7 @@
+# AI-Powered-Document-Summarizer 
+A document summarizer that uses NLP to summarize lengthy documents.
 
-![login page](./public/images/AI-Powered-Document-Summarizer.png)
+![display_image](./public/images/AI-Powered-Document-Summarizer.png)
 
 # Development Setup Guide
 
