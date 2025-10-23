@@ -1,3 +1,6 @@
+
+![login page](./public/images/AI-Powered-Document-Summarizer.png)
+
 # Development Setup Guide
 
 ## Prerequisites
