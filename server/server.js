@@ -20,7 +20,7 @@ loadModel().catch((err) => console.error("Failed to preload NLP model:", err))
 // Middleware
 app.use(
   cors({
-    origin: process.env.ALLOWED_ORIGINS?.split(",") || ["http://localhost:5173", "http://localhost:3001"],
+    origin: process.env.ALLOWED_ORIGINS?.split(",") || ["http://localhost:5173", "http://localhost:5174", "http://localhost:3001"],
     credentials: true,
   }),
 )
