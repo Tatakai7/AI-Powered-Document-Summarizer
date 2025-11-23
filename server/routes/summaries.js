@@ -168,7 +168,15 @@ router.delete("/:id", async (req, res) => {
       })
     }
 
+    const docId = summary.document_id
     await Summary.findByIdAndDelete(req.params.id)
+
+    // Check if there are any remaining summaries for this document
+    const remainingSummaries = await Summary.countDocuments({ document_id: docId })
+    if (remainingSummaries === 0) {
+      // If no summaries left, delete the document as well
+      await Document.findByIdAndDelete(docId)
+    }
 
     res.json({
       success: true,

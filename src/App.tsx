@@ -165,7 +165,19 @@ function App() {
     if (confirm('Are you sure you want to delete this summary?')) {
       try {
         await apiService.deleteSummary(summaryId);
-        setSummaries(prev => prev.filter(s => s.id !== summaryId));
+        setSummaries(prev => {
+          const newSummaries = prev.filter(s => s.id !== summaryId);
+          // Check if there are any remaining summaries for the deleted summary's document
+          const deletedSummary = prev.find(s => s.id === summaryId);
+          if (deletedSummary) {
+            const remainingForDoc = newSummaries.filter(s => s.documentId === deletedSummary.documentId);
+            if (remainingForDoc.length === 0) {
+              // Remove the document
+              setDocuments(prevDocs => prevDocs.filter(d => d.id !== deletedSummary.documentId));
+            }
+          }
+          return newSummaries;
+        });
       } catch (error: unknown) {
         console.error('Error deleting summary:', error);
         setError('Failed to delete summary. Please try again.');
