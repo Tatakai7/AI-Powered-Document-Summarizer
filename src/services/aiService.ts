@@ -1,9 +1,13 @@
 import * as use from '@tensorflow-models/universal-sentence-encoder';
+import * as tf from '@tensorflow/tfjs';
 
 let model: use.UniversalSentenceEncoder | null = null;
 
 export const loadModel = async (): Promise<void> => {
   if (!model) {
+    // Set TensorFlow.js backend
+    await tf.setBackend('webgl');
+    await tf.ready();
     model = await use.load();
   }
 };

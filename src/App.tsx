@@ -53,7 +53,7 @@ function App() {
 
       const formattedSummaries = summariesData.map((sum: any) => ({
         id: sum.id,
-        documentId: sum.document_id,
+        documentId: sum.document_id.id, // Use the populated document's id
         summaryText: sum.summary_text,
         keyPoints: sum.key_points,
         sentimentScore: sum.sentiment_score,
@@ -109,10 +109,14 @@ function App() {
       setDocuments(prev => [newDocument, ...prev]);
 
       const summaryText = await generateAISummary(content);
+      if (!summaryText.trim()) {
+        throw new Error('Unable to generate a meaningful summary from the document. Please ensure the document contains sufficient text content.');
+      }
+
       const keyPoints = extractKeyPoints(content);
       const sentimentResult = analyzeSentiment(content);
 
-      const compressionRatio = summaryText.length / content.length;
+      const compressionRatio = Math.min(summaryText.length / content.length, 1);
 
       const createdSummary = await apiService.createSummary({
         document_id: createdDoc.id,

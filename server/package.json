@@ -1,5 +1,5 @@
 {
-  "name": "document-summarizer-backend",
+  "name": "johnraymondcaberte",
   "version": "1.0.0",
   "description": "AI-powered document summarizer backend with Node.js, MongoDB, and TensorFlow.js",
   "main": "server.js",

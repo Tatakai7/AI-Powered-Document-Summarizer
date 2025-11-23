@@ -59,15 +59,34 @@ router.post("/", async (req, res) => {
       compression_ratio,
     } = req.body
 
+    console.log('Received summary data:', {
+      document_id,
+      summary_text: summary_text ? summary_text.substring(0, 100) + '...' : summary_text,
+      key_points: Array.isArray(key_points) ? key_points.length : typeof key_points,
+      sentiment_score: typeof sentiment_score,
+      sentiment_label,
+      tone_analysis: typeof tone_analysis,
+      compression_ratio: typeof compression_ratio
+    });
+
     if (
       !document_id ||
-      !summary_text ||
-      !key_points ||
-      sentiment_score === undefined ||
+      !summary_text || summary_text.trim() === '' ||
+      !Array.isArray(key_points) ||
+      sentiment_score === undefined || typeof sentiment_score !== 'number' ||
       !sentiment_label ||
-      !tone_analysis ||
-      compression_ratio === undefined
+      !tone_analysis || typeof tone_analysis !== 'object' ||
+      compression_ratio === undefined || typeof compression_ratio !== 'number'
     ) {
+      console.log('Validation failed for fields:', {
+        document_id: !!document_id,
+        summary_text: !!summary_text && summary_text.trim() !== '',
+        key_points: Array.isArray(key_points),
+        sentiment_score: sentiment_score !== undefined && typeof sentiment_score === 'number',
+        sentiment_label: !!sentiment_label,
+        tone_analysis: !!tone_analysis && typeof tone_analysis === 'object',
+        compression_ratio: compression_ratio !== undefined && typeof compression_ratio === 'number'
+      });
       return res.status(400).json({
         success: false,
         error: "Missing required fields",
