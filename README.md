@@ -45,8 +45,8 @@ A modern, fast, and intuitive **AI-powered document summarization tool** that he
 ### **1. Clone the Repository**
 
 ```bash
-git clone https://github.com/your-username/ai-document-summarizer.git
-cd ai-document-summarizer
+git clone https://github.com/your-username/AI_Powered_Document_Summarizer.git
+cd AI_Powered_Document_Summarizer
 ```
 
 ### **2. Install Dependencies**
