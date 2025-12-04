@@ -1,143 +1,156 @@
-# Development Setup Guide
+# AI-Powered Document Summarizer
 
-## Prerequisites
+A modern, fast, and intuitive **AI-powered document summarization tool** that helps users condense long PDFs, articles, and text files into clear and concise summaries. Built with cutting-edge technologies like **React**, **Node.js**, **MongoDB**, and **TensorFlow.js**, this project delivers efficient NLP-driven insights with a smooth user experience.
 
-- Node.js (v16 or higher)
-- MongoDB (local or cloud instance like MongoDB Atlas)
-- npm or yarn
+---
 
-## Step 1: Setup Backend
+## 🚀 Features
 
-### 1.1 Navigate to backend directory
+- **AI-Based Summarization** – Uses NLP models powered by TensorFlow.js to generate accurate and concise summaries.
+- **Multi-Format Support** – Upload and summarize PDF, TXT, and DOCX files.
+- **Real-Time Processing** – Fast server responses using Node.js.
+- **Modern UI** – Clean and responsive interface built with React.
+- **Document History** – Stores past summaries using MongoDB.
+- **Secure API** – Well-structured backend with proper routing and validation.
 
-\`\`\`bash
-cd backend
-\`\`\`
+---
 
-### 1.2 Install dependencies
+## 🛠️ Tech Stack
 
-\`\`\`bash
+### **Frontend**
+
+- React
+- Tailwind CSS / CSS Modules
+- Vite (optional)
+
+### **Backend**
+
+- Node.js
+- Express.js
+- TensorFlow.js (NLP models)
+
+### **Database**
+
+- MongoDB / Mongoose
+
+### **Others**
+
+- JWT Authentication
+- REST API Architecture
+
+---
+
+## 📦 Installation
+
+### **1. Clone the Repository**
+
+```bash
+git clone https://github.com/your-username/ai-document-summarizer.git
+cd ai-document-summarizer
+```
+
+### **2. Install Dependencies**
+
+# Install backend dependencies
+
+```bash
+cd server
 npm install
-\`\`\`
+```
 
-### 1.3 Configure environment variables
+# Install frontend dependencies
 
-Create a `.env` file in the backend directory:
-\`\`\`
-MONGODB_URI=mongodb://localhost:27017/document-summarizer
-
-# OR for MongoDB Atlas:
-
-# MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/document-summarizer
-
-PORT=3001
-NODE_ENV=development
-ALLOWED_ORIGINS=http://localhost:5173,http://localhost:3000
-\`\`\`
-
-### 1.4 Start the backend server
-
-\`\`\`bash
-npm run dev
-\`\`\`
-
-You should see:
-\`\`\`
-Server running on port 3001
-Connected to MongoDB
-NLP Model loaded successfully
-\`\`\`
-
-## Step 2: Setup Frontend
-
-### 2.1 Navigate to frontend directory
-
-\`\`\`bash
-cd AI-Powered-Document-Summarizer
-\`\`\`
-
-### 2.2 Install dependencies
-
-\`\`\`bash
+```bash
+cd ../client
 npm install
-\`\`\`
+```
 
-### 2.3 Start the development server
+### **3. Environment Variables**
 
-\`\`\`bash
+Create `.env` file in the **server** directory:
+
+```bash
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret_key
+PORT=5000
+```
+
+---
+
+## ▶️ Running the Project
+
+### **Start Backend**
+
+```bash
+cd server
+npm start
+```
+
+### **Start Frontend**
+
+```bash
+cd client
 npm run dev
-\`\`\`
+```
 
-The frontend will be available at `http://localhost:5173`
+> The app will be available at: **[http://localhost:5173](http://localhost:5173)**
 
-## Troubleshooting
+---
 
-### Error: ECONNREFUSED
+## 📘 API Endpoints
 
-**Problem:** Backend server is not running
-**Solution:**
+### **POST /api/summarize**
 
-1. Make sure you started the backend with `npm run dev` in the backend directory
-2. Verify the backend is running on port 3001
-3. Check that MongoDB is running and accessible
+Uploads and summarizes a document.
 
-### Error: MongoDB connection failed
+### **GET /api/history**
 
-**Problem:** MongoDB is not running or connection string is wrong
-**Solution:**
+Fetches stored summary history.
 
-1. If using local MongoDB, ensure MongoDB service is running
-2. If using MongoDB Atlas, verify your connection string in `.env`
-3. Check your firewall settings
+### **POST /api/auth/login**
 
-### Error: Port 3001 already in use
+Authenticates users.
 
-**Problem:** Another process is using port 3001
-**Solution:**
-\`\`\`bash
+---
 
-# Find process using port 3001
+## 📂 Folder Structure
 
-lsof -i :3001
+```bash
+ai-document-summarizer/
+│
+├── client/            # React frontend
+│   ├── src/
+│   ├── public/
+│   └── ...
+│
+├── server/            # Node.js backend
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── utils/
+│   └── ...
+│
+└── README.md
+```
 
-# Kill the process
+---
 
-kill -9 <PID>
-\`\`\`
+## 🧠 How It Works
 
-### Error: TensorFlow.js model loading fails
+1. User uploads a document.
+2. Backend extracts raw text.
+3. TensorFlow.js NLP model processes the text.
+4. Model generates a structured, concise summary.
+5. Summary is returned to the UI and saved in MongoDB.
 
-**Problem:** Model download is slow or network issue
-**Solution:**
+---
 
-1. Check your internet connection
-2. The model downloads on first run (~100MB)
-3. Wait for the "NLP Model loaded successfully" message
+## 🤝 Contributing
 
-## Running Both Servers
+Contributions are welcome! Submit issues or create pull requests.
 
-**Terminal 1 - Backend:**
-\`\`\`bash
-cd backend
-npm run dev
-\`\`\`
+---
 
-**Terminal 2 - Frontend:**
-\`\`\`bash
-cd AI-Powered-Document-Summarizer
-npm run dev
-\`\`\`
+## 📝 License
 
-Both servers must be running for the application to work properly.
-
-## API Endpoints
-
-Once both servers are running, the frontend will communicate with:
-
-- `GET /api/documents` - Fetch all documents
-- `POST /api/documents` - Upload a new document
-- `GET /api/summaries` - Fetch all summaries
-- `POST /api/summaries` - Create a summary
-- `POST /api/nlp/summarize` - Generate summary
-- `POST /api/nlp/sentiment` - Analyze sentiment
-- `POST /api/export/pdf` - Export to PDF
+This project is licensed under the **GPL 3.0 License**.
