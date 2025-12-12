@@ -45,19 +45,19 @@ A modern, fast, and intuitive **AI-powered document summarization tool** that he
 ### **1. Clone the Repository**
 
 ```bash
-git clone https://github.com/your-username/ai-document-summarizer.git
-cd ai-document-summarizer
+git clone https://github.com/Tatakai7/AI_Powered_Document_Summarizer.git
+cd AI_Powered_Document_Summarizer
 ```
 
 ### **2. Install Dependencies**
 
 ```bash
 # Install backend dependencies
-cd server
+cd AI_Powered_Document_Summarizer/server/
 npm install
 
 # Install frontend dependencies
-cd ../client
+cd AI_Powered_Document_Summarizer/src/
 npm install
 ```
 
@@ -78,14 +78,14 @@ PORT=5000
 ### **Start Backend**
 
 ```bash
-cd server
+cd AI_Powered_Document_Summarizer/server/
 npm start
 ```
 
 ### **Start Frontend**
 
 ```bash
-cd client
+cd AI_Powered_Document_Summarizer/src/
 npm run dev
 ```
 
@@ -112,18 +112,21 @@ Authenticates users.
 ## 📂 Folder Structure
 
 ```bash
-ai-document-summarizer/
+AI_Powered_Document_Summarizer/
 │
-├── client/            # React frontend
-│   ├── src/
-│   ├── public/
+├── src/               # React frontend
+│   ├── components/
+│   ├── services/
+│   ├── types/
+│   ├── utils/
 │   └── ...
 │
 ├── server/            # Node.js backend
-│   ├── controllers/
+│   ├── config/
+│   ├── middleware/
 │   ├── models/
 │   ├── routes/
-│   ├── utils/
+│   ├── services/
 │   └── ...
 │
 └── README.md
@@ -153,7 +156,5 @@ This project is licensed under the **GPL 3.0 License**.
 
 ---
 
-## 💬 Contact
-
 For questions or ideas:
-**[your-email@example.com](mailto:your-email@example.com)**
+**[defaultface0@gmail.com](mailto:defaultface0@gmail.com)**
