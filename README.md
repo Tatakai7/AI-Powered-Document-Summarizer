@@ -2,7 +2,7 @@
 
 A modern, fast, and intuitive **AI-powered document summarization tool** that helps users condense long PDFs, articles, and text files into clear and concise summaries. Built with cutting-edge technologies like **React**, **Node.js**, **MongoDB**, and **TensorFlow.js**, this project delivers efficient NLP-driven insights with a smooth user experience.
 
-![AI_Powered_Document_Summarizer](./public/images/AI-Powered-Document-Summarizer.png)
+![AI_Powered_Document_Summarizer](./public/images/AI_Powered_Document_Summarizer.png)
 
 ---
 
