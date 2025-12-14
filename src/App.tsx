@@ -274,7 +274,7 @@ function App() {
         </header>
 
         <div className="mb-6">
-          <div className="flex space-x-2 bg-white rounded-lg p-1 shadow-md border border-gray-200 inline-flex">
+          <div className="inline-flex space-x-2 bg-white rounded-lg p-1 shadow-md border border-gray-200 inline-flex">
             <button
               onClick={() => setActiveTab('upload')}
               className={`px-6 py-2.5 rounded-md font-medium transition-all ${
