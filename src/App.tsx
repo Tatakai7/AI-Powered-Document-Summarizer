@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { Brain, FileText, TrendingUp, AlertCircle } from 'lucide-react';
-import { DocumentUploader } from '../src/components/DocumentUploader';
-import { SummaryCard } from '../src/components/SummaryCard';
+const DocumentUploader = lazy(() => import('../src/components/DocumentUploader').then(module => ({ default: module.DocumentUploader })));
+const SummaryCard = lazy(() => import('../src/components/SummaryCard').then(module => ({ default: module.SummaryCard })));
 import { LoadingOverlay } from '../src/components/LoadingOverlay';
 import { generateAISummary, analyzeSentiment } from '../src/services/aiService';
 import { exportSummaryToPDF } from '../src/services/pdfService';
@@ -301,7 +301,9 @@ function App() {
         <main>
           {activeTab === 'upload' && (
             <div className="max-w-3xl mx-auto">
-              <DocumentUploader onUploadComplete={handleUploadComplete} />
+              <Suspense fallback={<LoadingOverlay message="Loading upload component..." />}>
+                <DocumentUploader onUploadComplete={handleUploadComplete} />
+              </Suspense>
 
               {summaries.length === 0 && !error && (
                 <div className="mt-8 bg-blue-50 border border-blue-200 rounded-xl p-6">
@@ -350,22 +352,24 @@ function App() {
                   </button>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  {summaries.map(summary => {
-                    const document = documents.find(d => d.id === summary.documentId);
-                    if (!document) return null;
+                <Suspense fallback={<LoadingOverlay message="Loading summaries..." />}>
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    {summaries.map(summary => {
+                      const document = documents.find(d => d.id === summary.documentId);
+                      if (!document) return null;
 
-                    return (
-                      <SummaryCard
-                        key={summary.id}
-                        summary={summary}
-                        document={document}
-                        onExport={handleExport}
-                        onDelete={handleDelete}
-                      />
-                    );
-                  })}
-                </div>
+                      return (
+                        <SummaryCard
+                          key={summary.id}
+                          summary={summary}
+                          document={document}
+                          onExport={handleExport}
+                          onDelete={handleDelete}
+                        />
+                      );
+                    })}
+                  </div>
+                </Suspense>
               )}
             </div>
           )}
